@@ -1,0 +1,79 @@
+{% extends "user/layout.html" %}
+
+
+{% block body %}
+<style>
+
+* {
+    font-family: sans-serif;
+}
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+    width: 60vh;
+    margin-left: 210px;
+	margin-top: 50px;
+	color: white;
+    border-radius: 10px;
+	font-size: 10px;
+	padding-bottom: 100px;
+    background-color: darkred
+}
+
+.login_link {
+    display: flex;
+    justify-content: center
+}
+input {
+    display: block;
+    outline: none;
+    border-radius: 10px;
+    padding-left: 10px;
+    border:none
+}
+.submit {
+    margin-top: 10px;
+    color: white;
+    background-color: rgb(12, 12, 12);
+    padding-right: 10px;
+}
+.submit:hover {
+    opacity: 0.90;
+}
+.submit:active {
+    opacity: 0.80;
+}
+</style>
+<div class="border">
+    <div class="container">
+        <h1>Sign Up</h1>
+        <form  method="POST">
+            {% csrf_token %}
+            <label>Email Adress</label>
+            <input type="email" name="email" placeholder="Enter Email">
+    
+            <label>Username</label>
+            <input type="text" name="user" placeholder="Enter Username">
+    
+            <label>Password</label>
+            <input type="password" name="pass1" placeholder="Enter Password">
+    
+            <label>Password (Confirm)</label>
+            <input type="password" name="pass2"placeholder="Enter Password">
+            
+            <input class="submit" type="submit" value="Sign Up">
+        </form>
+    </div>
+    <div>
+        {% for message in messages %}
+        <h3>{{ message }}</h3>
+        {% endfor %}
+    </div>
+    <a class="login_link" href="{% url 'login' %}">Login</a>
+</div>
+
+
+
+{% endblock %}

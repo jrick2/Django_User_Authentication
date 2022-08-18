@@ -1,0 +1,65 @@
+{% extends "user/layout.html" %}
+
+
+{% block body %}
+<style>
+* {
+    font-family: sans-serif;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 60vh;
+    margin-left: 210px;
+    margin-top: 50px;
+    color: white;
+    border-radius: 10px;
+    font-size: 10px;
+    padding-bottom: 100px;
+    padding-top: 20px;
+    background-color: darkred
+}
+
+.login_link {
+    display: flex;
+    justify-content: center
+}
+input {
+    display: block;
+    outline: none;
+    border-radius: 10px;
+    padding-left: 10px;
+    border:none
+}
+.submit {
+    margin-top: 10px;
+    color: white;
+    background-color: rgb(12, 12, 12);
+    padding-right: 10px;
+}
+.submit:hover {
+    opacity: 0.90;
+}
+.submit:active {
+    opacity: 0.80;
+}
+</style>
+<div class="container">
+    <h1>Login</h1>
+    {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <label>Username</label>
+        <input type="text" name="username" placeholder="Username">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Password">
+        <input class="submit" type="submit" value="login">
+    </form>
+</div>
+
+    <a class="login_link" href="{% url 'sign_up' %}">Sign Up</a>
+{% endblock %}

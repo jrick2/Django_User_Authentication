@@ -56,6 +56,6 @@ def sign_up(request):
 
         else:
             messages.info(request, "Passsword do not match")
-            return HttpResponseRedirect("index")
+            return redirect("sign_up")
         
     return render(request, "user/sign-up.html")

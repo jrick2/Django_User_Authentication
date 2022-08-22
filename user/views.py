@@ -39,7 +39,7 @@ def sign_up(request):
         password2 =  request.POST['pass2']
 
         if password1 != password2:
-            messages.info(request,'Passworn do not match)
+            messages.info(request,'Passworn do not match')
             return redirect("sign_up")
             if User.objects.filter(username=user).exists():
                 messages.info(request,'Username Already exist')
